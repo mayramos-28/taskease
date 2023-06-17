@@ -14,7 +14,7 @@ return new class extends Migration
         //crear tabla tasks
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100)->nullable(false);
+           // $table->string('name', 100)->nullable(false);
             $table->string('title', 100)->nullable(false);
             $table->text('description')->nullable(true);
             $table->date('expiration_date')->nullable(true);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('category_id')->nullable(false);
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+           // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

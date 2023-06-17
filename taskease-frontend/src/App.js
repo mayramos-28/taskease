@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import { RegisterPage } from './pages/RegisterPage';
+
+import MainPage from './pages/MainPage';
 
 function App() {
   return (
-    <div className="App">
-     <h1>React App</h1>
-     <RegisterPage />
+    <div className="App"> 
+     <MainPage/>
     </div>
   );
 }
