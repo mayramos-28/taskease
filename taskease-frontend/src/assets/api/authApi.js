@@ -16,5 +16,15 @@ export const login = async (data) => {
         body: data,
     });
     localStorage.setItem('token', response.token);
+    localStorage.setItem('user_id', response.user_id);
+    return response.message;
+};
+
+export const logout = async () => {
+    const response = await taskeaseApi({
+        path: '/auth/logout',
+        method: 'POST',
+    });
+    localStorage.removeItem('token');
     return response.message;
 };

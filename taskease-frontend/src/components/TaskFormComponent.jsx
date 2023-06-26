@@ -2,7 +2,7 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 
 const statusOptions = [
     { value: "pending", label: "Pendiente" },
-    { value: "in_Progress", label: "En progreso" },
+    { value: "in_progress", label: "En progreso" },
     { value: "completed", label: "Completada" },
     { value: "canceled", label: "Cancelada" }
 ];
@@ -15,24 +15,18 @@ export const TasKFormComponent = ({task, onSubmit, btnValue}) => {
                 initialValues={{...task}}
                 validate={(values) => {
                     const errors = {};
-                    if (!values.taskName) {
-                        errors.taskName = 'Requerido';
-                    }
+                    
                     if (!values.title) {
                         errors.title = 'Requerido';
                     }
                     if (!values.description) {
                         errors.description = 'Requerido';
                     }
-                    if (!values.user_id) {
-                        errors.user_id = 'Requerido';
-                    }
+                   
                     if (!values.status) {
                         errors.status = 'Requerido';
                     }
-                    if (!values.category) {
-                        errors.category = 'Requerido';
-                    }
+                    
                     if (!values.expiration_date) {
                         errors.expiration_date = 'Requerido';
                     }

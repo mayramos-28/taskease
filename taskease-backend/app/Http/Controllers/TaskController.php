@@ -15,9 +15,7 @@ class TaskController extends Controller
         if ($request->has('user_id') && $request->get('user_id')) {
             $where[] = ['user_id', '=', $request->get('user_id')];
         }
-        if ($request->has('category_id') && $request->get('category_id')) {
-            $where[] = ['category_id', '=', $request->get('category_id')];
-        }
+        
         if ($request->has('status') && $request->get('status')) {
             $where[] = ['status', '=', $request->get('status')];
         }
@@ -35,7 +33,7 @@ class TaskController extends Controller
                 [
                     'status' => 'success',
                     'message' =>  $message,
-                    'taks' => $tasks,
+                    'tasks' => $tasks,
                 ],
                 200
             );

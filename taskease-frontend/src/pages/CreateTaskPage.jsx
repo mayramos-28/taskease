@@ -1,29 +1,22 @@
-import { useEffect, useRef } from "react";
+import React from 'react';
 import { TasKFormComponent } from "../components/TaskFormComponent";
 import { useDispatch } from "react-redux";
 import { createTask } from "../store/thunks/taskThunk";
-import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router";
 
-
-export const CreateTaskPage = () => {
-
-    //const firstExecution = useRef(true);
+export const CreateTaskPage = () => {   
     const dispatch = useDispatch();
-
-
-    // useEffect(() => {
-    //     if (firstExecution.current) {
-    //         dispatch(createTask());
-    //         firstExecution.current = false;
-    //     }
-
-    // }, [dispatch, firstExecution]);
-
+    const user_id = localStorage.getItem('user_id');
+    const handleSubmit = (values) => {
+        dispatch(createTask({ ...values }));
+        window.location.href = '/';
+    };
     const task = {
         title: '',
         description: '',       
         status: '',     
-        expiration_date: ''
+        expiration_date: '',
+        user_id: user_id
     }
     return (
         <>
@@ -31,11 +24,7 @@ export const CreateTaskPage = () => {
                 <h2 className="text-2xl font-bold mb-4">Añadir tarea</h2>
                 <TasKFormComponent 
                 task={task}
-                onSubmit={(values) => {
-                    dispatch(createTask({ ...values })).then(
-                        () => Navigate("/")
-                    );
-                }}
+                onSubmit={ handleSubmit }
                 btnValue="Añadir"
 
                 />

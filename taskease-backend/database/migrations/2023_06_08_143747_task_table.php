@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('status', ['pending', 'completed', 'in_progress','deleted'])->default('pending');
             $table->unsignedBigInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('category_id')->nullable(false);
+            //$table->unsignedBigInteger('category_id')->nullable(false);
            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

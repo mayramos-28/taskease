@@ -12,7 +12,7 @@ export const LoginPage = () => {
     };
     if (loading) return <h1>Loading...</h1>;
     if (error) return <h1>{error}</h1>;
-    if (success) return (<Navigate to="/home" />) ;
+    if (success) return (<Navigate to="/" />) ;
     return (
         <LoginComponent
         key={user.id}        

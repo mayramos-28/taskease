@@ -1,9 +1,10 @@
 import { taskeaseApi } from "./taskeaseApi";
 
-export const getTasks = async ({filter}) => {
+export const getTasks = async (filter) => {
     const response = await taskeaseApi({
-        path: `/tasks?filter=${filter}`,
+        path: `/tasks/index`,
         method: 'GET',
+        query :filter
     });
     return response.tasks;
 };

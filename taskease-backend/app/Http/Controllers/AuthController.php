@@ -28,7 +28,7 @@ class AuthController extends Controller
             if (password_verify($data['password'], $user->password)) {
                 $token = $user->createToken('auth_token')->plainTextToken;
                 $message = 'Usuario logueado correctamente';
-                return response()->json(['message' => $message, 'token' => $token], 200);
+                return response()->json(['message' => $message, 'token' => $token, 'user_id'=>$user->id], 200);
             } else {
                 $message = 'Contraseña incorrecta';
                 return response()->json(['message' => $message], 401);
@@ -37,5 +37,13 @@ class AuthController extends Controller
             $message = 'Usuario no encontrado';
             return response()->json(['message' => $message], 401);
         }
+    }
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+
+        $request->sesión()->regenerarToken();
+
+        return response()->json('Cierre de sesión exitoso');
     }
 }

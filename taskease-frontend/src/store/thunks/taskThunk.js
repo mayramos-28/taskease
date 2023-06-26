@@ -3,7 +3,7 @@ import {createTask as createTaskApi, getTasks as getTasksApi} from '../../assets
 
 export const fetchTasks = createAsyncThunk(
     'tasks/fetchTasks',
-    async ({filter}) => await getTasksApi({filter})
+    async (filter) => await getTasksApi(filter)
 );
 
 export const createTask = createAsyncThunk(
