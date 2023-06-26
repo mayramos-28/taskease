@@ -119,12 +119,6 @@ export const RegisterComponent = ({ user, onSubmit }) => {
                 </button>
               </div>
 
-              <p className="mt-10 text-center text-sm text-gray-500">
-                Ya tienes cuenta?{' '}
-                <Link as={NavLink} to='\login' className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                  Accede
-                </Link>
-              </p>
             </div>
           </div>
 
