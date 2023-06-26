@@ -96,7 +96,7 @@ export const LoginComponent = ({ user, onSubmit, errorLogin }) => {
 
                             <p className="mt-10 text-center text-sm text-gray-500">
                                 Not a member?{' '}
-                                <Link as={NavLink} to={'\register'} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                                <Link as={NavLink} to='register' className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                                     Registrate
                                 </Link>
                             </p>
