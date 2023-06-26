@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { TasKFormComponent } from "../components/TaskFormComponent";
 import { editTask, showTask } from "../store/thunks/taskThunk";
 import { selectTaskById } from "../store/slices/taskSlice";
@@ -26,7 +26,7 @@ export const EditTaskPage = () => {
                 });
             firstExecution.current = false;
         }
-    }, [dispatch, firstExecution.current, deletionPerformed]);
+    }, [dispatch, deletionPerformed, taskId]);
 
     if (loading) {
         return(

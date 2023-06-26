@@ -9,7 +9,7 @@ export const PendingTasksComponent = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectAllTasks);
   const [deletionPerformed, setDeletionPerformed] = useState(false);
-  const { loading, error, success } = useSelector(state => state.task);
+  const { loading } = useSelector(state => state.task);
 
   const user_id = localStorage.getItem('user_id');
 
@@ -20,7 +20,7 @@ export const PendingTasksComponent = () => {
       firstExecution.current = false;
     }
 
-  }, [dispatch, user_id, deletionPerformed, firstExecution.current]);
+  }, [dispatch, user_id, deletionPerformed]);
   if (loading) {
     return (
       <div className="flex justify-center items-center">

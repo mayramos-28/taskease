@@ -1,5 +1,4 @@
 
-import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { getLimitDate } from "../helpers/dates";
 
@@ -21,7 +20,7 @@ export const ListTaskComponent = ({ tasks }) => {
   return (
     <>
 
-      <ul role="list" className="divide-y ">
+      <ul className="divide-y ">
 
         {tasks.map((task) => (
           <li key={task.email} className="flex justify-between gap-x-6 py-5">

@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Link, NavLink } from 'react-router-dom';
 
 export const LoginComponent = ({ user, onSubmit, errorLogin }) => {
     return (
@@ -17,13 +18,10 @@ export const LoginComponent = ({ user, onSubmit, errorLogin }) => {
             })}
         >
             {({
-                values,
-                errors,
-                touched,
+                values,               
                 handleChange,
                 handleBlur,
-                handleSubmit,
-                isSubmitting,
+                handleSubmit            
                 /* and other goodies */
             }) => (
 
@@ -68,11 +66,7 @@ export const LoginComponent = ({ user, onSubmit, errorLogin }) => {
                                         <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                                             Contraseña
                                         </label>
-                                        <div className="text-sm">
-                                            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                                Forgot password?
-                                            </a>
-                                        </div>
+                                       
                                     </div>
                                     <div className="mt-2">
                                         <input
@@ -102,9 +96,9 @@ export const LoginComponent = ({ user, onSubmit, errorLogin }) => {
 
                             <p className="mt-10 text-center text-sm text-gray-500">
                                 Not a member?{' '}
-                                <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                                <Link as={NavLink} to={'\register'} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                                     Registrate
-                                </a>
+                                </Link>
                             </p>
                         </div>
                     </div>

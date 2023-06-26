@@ -1,6 +1,6 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+import { Disclosure } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Route, Routes } from 'react-router-dom'
 import { RegisterPage } from './RegisterPage'
 import { LoginPage } from './LoginPage'
@@ -20,6 +20,7 @@ let navigation = [];
 if (!isLogged) {
 
   navigation = [
+    { name: 'Home', href: '/tasks', current: true },
     { name: 'Login', href: '/login', current: false },
     { name: 'Registro', href: '/register', current: false }
   ];

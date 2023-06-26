@@ -1,6 +1,7 @@
 import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Link, NavLink } from 'react-router-dom';
 
 export const RegisterComponent = ({ user, onSubmit }) => {
 
@@ -20,12 +21,11 @@ export const RegisterComponent = ({ user, onSubmit }) => {
     >
       {({
         values,
-        errors,
-        touched,
+        
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting,
+    
         /* and other goodies */
       }) => (
 
@@ -92,11 +92,7 @@ export const RegisterComponent = ({ user, onSubmit }) => {
                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                     Contraseña
                   </label>
-                  <div className="text-sm">
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Forgot password?
-                    </a>
-                  </div>
+                 
                 </div>
                 <div className="mt-2">
                   <input
@@ -125,9 +121,9 @@ export const RegisterComponent = ({ user, onSubmit }) => {
 
               <p className="mt-10 text-center text-sm text-gray-500">
                 Ya tienes cuenta?{' '}
-                <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                <Link as={NavLink} to='\login' className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                   Accede
-                </a>
+                </Link>
               </p>
             </div>
           </div>

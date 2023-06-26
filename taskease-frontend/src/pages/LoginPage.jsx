@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-
-import { loginThunk, registerThunk } from "../store/thunks/authThunk";
+import { loginThunk } from "../store/thunks/authThunk";
 import { LoginComponent } from "../components/LoginComponents";
-import { Link, NavLink, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+
 export const LoginPage = () => {
     const dispatch = useDispatch();
     const { loading, error, success } = useSelector(state => state.login);

@@ -25,7 +25,7 @@ export const AllTaskComponente = () => {
             firstExecution.current = false;
         }
 
-    }, [dispatch, user_id, firstExecution.current, deletionPerformed]);
+    }, [dispatch, user_id,  deletionPerformed]);
 
 
     if (loading) {

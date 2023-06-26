@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef} from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/thunks/authThunk';
 
@@ -7,7 +7,7 @@ export const LogoutComponent = () => {
     const logoutFlag = useRef(false);
 
     const handleLogout = () => {
-        dispatch(logout()) .then(() => {
+        dispatch(logout()).then(() => {
             console.error('todo bien a cerrar sesión:');
             window.location.href = '/login';
         })

@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom";
 
 export const ShowTaskPage = () => {
-    const taskId = useParams().taskId;
+  //  const taskId = useParams().taskId;
    
 
     return (

@@ -31,7 +31,7 @@ export const DeletePage = () => {
           console.error('Error al eliminar la tarea:', error);
         });
     }
-  }, [dispatch, taskId, navigate, cancelButtonRef.current, deletionPerformed]);
+  }, [dispatch, taskId, navigate,  deletionPerformed]);
   
 
   return (

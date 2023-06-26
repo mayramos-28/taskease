@@ -8,7 +8,7 @@ export const CompletedTasksComponent = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectAllTasks);
   const [deletionPerformed, setDeletionPerformed] = useState(false);
-  const { loading, error, success } = useSelector(state => state.task);
+  const { loading, error } = useSelector(state => state.task);
 
   const user_id = localStorage.getItem('user_id');
 
@@ -19,7 +19,7 @@ export const CompletedTasksComponent = () => {
       firstExecution.current = false;
     }
 
-  }, [dispatch, user_id, firstExecution.current, deletionPerformed]);
+  }, [dispatch, user_id, deletionPerformed]);
   if (loading) {
     return (
       <div className="flex justify-center items-center">
