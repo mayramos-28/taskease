@@ -23,8 +23,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [AuthController::class, 'register']);    
     Route::post('/login', [AuthController::class, 'login']);    
-    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-});
+    Route::post('/logout', [AuthController::class, 'logout']);})->middleware('auth:sanctum');
+
+
+
 Route::group(['prefix' => 'tasks'], function(){
     Route::get('/index', [TaskController::class, 'index']);   
     Route::get('/show/{id}', [TaskController::class, 'show']);

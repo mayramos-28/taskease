@@ -1,36 +1,45 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllTasks } from "../store/slices/taskSlice";
 import { fetchTasks } from "../store/thunks/taskThunk";
 import { ListTaskComponent } from "./ListTaskComponent";
 export const CompletedTasksComponent = () => {
-    const firstExecution = useRef(true);
-    const dispatch = useDispatch();
-    const tasks = useSelector(selectAllTasks);
-    const { loading, error, success } = useSelector(state => state.task);
-  
-    const user_id = localStorage.getItem('user_id');
-  
-    useEffect(() => {
-      if (firstExecution) {
-        dispatch(fetchTasks ({ user_id: user_id, status: 'completed' }));
-        firstExecution.current = false;
-      }
-  
-    }, [dispatch, user_id]);
-    if(loading) return <p>Cargando...</p>
-    if(error) return <p>{error}</p>
-    if(tasks.length === 0) return (
-        <div className="py-5">
-            No hay tareas completadas
-        </div>
-    )
+  const firstExecution = useRef(true);
+  const dispatch = useDispatch();
+  const tasks = useSelector(selectAllTasks);
+  const [deletionPerformed, setDeletionPerformed] = useState(false);
+  const { loading, error, success } = useSelector(state => state.task);
+
+  const user_id = localStorage.getItem('user_id');
+
+  useEffect(() => {
+    if (firstExecution.current && !deletionPerformed) {
+      dispatch(fetchTasks({ user_id: user_id, status: 'completed' }))
+        .then(() => { setDeletionPerformed(true) });
+      firstExecution.current = false;
+    }
+
+  }, [dispatch, user_id, firstExecution.current, deletionPerformed]);
+  if (loading) {
     return (
-        <>
-      
-        <ListTaskComponent tasks={tasks}/>
-        </>
-    );
+      <div className="flex justify-center items-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+
+    )
+  }
+  if (error) return <p>{error}</p>
+  if (tasks.length === 0) return (
+    <div className="py-5">
+      No hay tareas completadas
+    </div>
+  )
+  return (
+    <>
+
+      <ListTaskComponent tasks={tasks} />
+    </>
+  );
 };
 
 

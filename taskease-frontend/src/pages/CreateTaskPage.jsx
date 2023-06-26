@@ -9,7 +9,7 @@ export const CreateTaskPage = () => {
     const user_id = localStorage.getItem('user_id');
     const handleSubmit = (values) => {
         dispatch(createTask({ ...values }));
-        window.location.href = '/';
+        window.location.href = '/task/allTasks';
     };
     const task = {
         title: '',

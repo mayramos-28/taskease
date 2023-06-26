@@ -2,42 +2,28 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Route, Routes } from 'react-router-dom'
-import App from '../App'
 import { RegisterPage } from './RegisterPage'
 import { LoginPage } from './LoginPage'
-import { HomePage, mainPage } from './homePage'
-import { CreateTaskComponent, TasKFormComponent } from '../components/TaskFormComponent'
+import { HomePage } from './homePage'
 import { CreateTaskPage } from './CreateTaskPage'
 import { LogoutComponent } from '../components/LogoutComponent'
 import { PendingTasksComponent } from '../components/PendingTasksComponent'
 import { CompletedTasksComponent } from '../components/CompletedTaskComponent'
 import { AllTaskComponente } from '../components/AllTasksComponents'
+import { ShowTaskPage } from './ShowTaskPage'
+import { EditTaskPage } from './EditaTaskPage'
+import { DeletePage } from './DeletePage'
 
 const isLogged = localStorage.getItem('token');
-const logout = () => {
-  localStorage.removeItem('token');
-  window.location.href = '/login';
-};
 
-let navigation = [
-  { name: 'Inicio', href: '/', current: true },
-  { name: 'Login', href: '/login', current: false },
-  { name: 'Registro', href: '/register', current: false }
-  
-];
-
+let navigation = [];
 if (!isLogged) {
-  navigation.push(
+
+  navigation = [
     { name: 'Login', href: '/login', current: false },
     { name: 'Registro', href: '/register', current: false }
-  );
-} else {
-  navigation.push(
-    { name: 'Logout', href: '#', onclick: logout, current: false }
-  );
+  ];
 }
-
-
 
 
 function classNames(...classes) {
@@ -95,63 +81,10 @@ export default function MainPage() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                 
+
                   {<LogoutComponent />}
-                 
-                  <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              Your Profile
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
+
+
                 </div>
               </div>
             </div>
@@ -183,22 +116,25 @@ export default function MainPage() {
         <div className="">
           <Routes>
             <Route exact path="/login" Component={LoginPage} />
-            <Route exact path="/register" Component={RegisterPage} />     
+            <Route exact path="/register" Component={RegisterPage} />
 
-           
-              <Route exact path="/new-task" Component={CreateTaskPage} />
-              
-              <Route path="/tasks" Component={HomePage} >
-                <Route exact path="allTasks" Component={AllTaskComponente} />
-                <Route exact path="pendingTasks" Component={PendingTasksComponent}/>
-                <Route exact path="completedTasks" Component={CompletedTasksComponent}/>
 
-                
-              </Route>
+            <Route exact path="/new-task" Component={CreateTaskPage} />
 
-              
+            <Route path="/tasks" Component={HomePage} >
+              <Route exact path="allTasks" Component={AllTaskComponente} />
+              <Route exact path="pendingTasks" Component={PendingTasksComponent} />
+              <Route exact path="completedTasks" Component={CompletedTasksComponent} />
+              <Route exact path="/tasks/:taskId" Component={ShowTaskPage} />
+              <Route exact path="/tasks/:taskId/edit" Component={EditTaskPage} />
+              <Route exact path="/tasks/:taskId/delete" Component={DeletePage} />
 
-           
+
+            </Route>
+
+
+
+
             <Route path="/" Component={HomePage} />
           </Routes>
         </div>

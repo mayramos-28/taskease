@@ -39,7 +39,7 @@ class TaskController extends Controller
             );
         }
 
-        $tasks = Task::where($where)->get();
+        $tasks = Task::where($where)->orderBy('created_at', 'desc')->get();
         return response()->json(
             [
                 'status' => 'success',

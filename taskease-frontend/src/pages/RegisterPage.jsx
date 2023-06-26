@@ -10,7 +10,14 @@ export const RegisterPage = () => {
         email: '',
         password: ''
     };
-    if (loading) return <h1>Loading...</h1>;
+    if (loading) {
+        return(
+            <div className="flex justify-center items-center">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+            
+        )
+    }
     if (error) return <h1>{error}</h1>;
     if(success) return(<Navigate to="/login" />);
     return (

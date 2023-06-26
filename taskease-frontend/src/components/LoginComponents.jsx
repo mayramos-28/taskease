@@ -3,7 +3,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-export const LoginComponent = ({ user, onSubmit }) => {
+export const LoginComponent = ({ user, onSubmit, errorLogin }) => {
     return (
         <Formik
             initialValues={{ ...user }}
@@ -98,7 +98,7 @@ export const LoginComponent = ({ user, onSubmit }) => {
                                         Acceder
                                     </button>
                                 </div>
-                            
+                            {errorLogin && <p className="mt-2 text-center text-sm text-red-600">{errorLogin}</p>}
 
                             <p className="mt-10 text-center text-sm text-gray-500">
                                 Not a member?{' '}

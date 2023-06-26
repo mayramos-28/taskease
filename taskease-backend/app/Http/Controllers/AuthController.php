@@ -6,6 +6,7 @@ use App\Http\Requests\loginRequest;
 use App\Http\Requests\registerRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -38,12 +39,9 @@ class AuthController extends Controller
             return response()->json(['message' => $message], 401);
         }
     }
-    public function logout(Request $request)
+    public function logout()
     {
-        $request->session()->invalidate();
-
-        $request->sesión()->regenerarToken();
-
+        Auth::logout();          
         return response()->json('Cierre de sesión exitoso');
     }
 }

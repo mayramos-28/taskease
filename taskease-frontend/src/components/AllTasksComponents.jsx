@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllTasks } from "../store/slices/taskSlice";
 
@@ -10,21 +10,32 @@ export const AllTaskComponente = () => {
     const firstExecution = useRef(true);
     const dispatch = useDispatch();
     const tasks = useSelector(selectAllTasks);
-    const { loading, error, success } = useSelector(state => state.task);
+    const [deletionPerformed, setDeletionPerformed] = useState(false);
+    const { loading, error } = useSelector(state => state.task);
 
     const user_id = localStorage.getItem('user_id');
 
     useEffect(() => {
-        if (firstExecution) {
-            dispatch(fetchTasks({ user_id: user_id }));
+        if (firstExecution.current  && !deletionPerformed) {
+            dispatch(fetchTasks({ user_id: user_id }))
+            .then(() => {
+                setDeletionPerformed(true);
+                
+            });
             firstExecution.current = false;
         }
 
-    }, [dispatch, user_id]);
+    }, [dispatch, user_id, firstExecution.current, deletionPerformed]);
 
 
-    console.log(tasks, 'tareas principal')
-    if (loading) return <p>Cargando...</p>
+    if (loading) {
+        return(
+            <div className="flex justify-center items-center">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+            
+        )
+    }
     if (error) return <p>{error}</p>
 
 
