@@ -22,7 +22,7 @@ EaseApp es una aplicación de gestión de tareas simple y fácil de usar. Te per
 Debe tener
 
 1 Clonar el repositorio a tu máquina local utilizando el siguiente comando:
-   -  git clone https://github.com/tu-usuario/easeApp.git
+   -  git clone https://github.com/mayramos-28/taskease.git
 2 Navega al directorio del proyecto:
 3 Despliega los contenedores Docker utilizando los comandos proporcionados:
     - make start
