@@ -9,6 +9,15 @@ services:
     networks:
       - taskease
     command: "npm start"
+
+
+  web:
+    image: nginx:1.21.1-alpine
+    ports:
+      - "3005:80"
+    volumes:
+      - ./build:/usr/share/nginx/html
+
 networks:
   taskease:
     external: true
