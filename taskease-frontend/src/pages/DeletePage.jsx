@@ -6,6 +6,7 @@ import { Dialog, Transition } from '@headlessui/react';
  import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { deleteTask } from "../store/thunks/taskThunk";
 import { useNavigate, useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export const DeletePage = () => {
   const taskId = useParams().taskId;
@@ -24,8 +25,8 @@ export const DeletePage = () => {
     if (cancelButtonRef.current && !deletionPerformed) {
       dispatch(deleteTask(taskId))
         .then(() => {
-          setDeletionPerformed(true);
-          navigate('/tasks/allTasks');
+          setDeletionPerformed(true).then(() => ( <Navigate to="/tasks/allTasks" />));
+         
         })
         .catch((error) => {
           console.error('Error al eliminar la tarea:', error);

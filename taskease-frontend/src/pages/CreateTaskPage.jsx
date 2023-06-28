@@ -7,7 +7,7 @@ import { Navigate } from "react-router-dom";
 export const CreateTaskPage = () => {   
     const dispatch = useDispatch();
     const user_id = localStorage.getItem('user_id');
-    const { loading, error, suceess } = useSelector(state => state.task);
+    const { loading, error, success } = useSelector(state => state.task);
     const handleSubmit = (values) => {
         dispatch(createTask({ ...values }))                 
     };
@@ -23,7 +23,7 @@ export const CreateTaskPage = () => {
                 <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
             </div>
     }
-    if(suceess){
+    if(success){
         <Navigate to="/tasks/allTasks" />
     }
     return (
