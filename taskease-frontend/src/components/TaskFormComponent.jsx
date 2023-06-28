@@ -72,7 +72,7 @@ export const TasKFormComponent = ({task, onSubmit, btnValue, errorForm}) => {
                         </button>
 
                         <div>
-                            {errorForm && <div className="text-red-500 mt-1">{errorCreate}</div>}
+                            {errorForm && <div className="text-red-500 mt-1">{errorForm}</div>}
                         </div>
                     </Form>
                 )}
