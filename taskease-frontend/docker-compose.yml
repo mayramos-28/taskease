@@ -8,7 +8,7 @@ services:
       - "3000:3000"
     networks:
       - taskease
-    command: "npm start"
+    command: "npm install && npm start"
 
 
   web:
