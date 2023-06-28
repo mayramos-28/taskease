@@ -5,7 +5,7 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
  import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { deleteTask } from "../store/thunks/taskThunk";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 export const DeletePage = () => {
@@ -13,7 +13,7 @@ export const DeletePage = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
-  const navigate = useNavigate();
+
   const [deletionPerformed, setDeletionPerformed] = useState(false);
 
   const handleDelete = () => {
