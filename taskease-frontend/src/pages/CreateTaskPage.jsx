@@ -2,13 +2,17 @@ import React from 'react';
 import { TasKFormComponent } from "../components/TaskFormComponent";
 import { useDispatch } from "react-redux";
 import { createTask } from "../store/thunks/taskThunk";
+import { Navigate } from "react-router-dom";
 
 export const CreateTaskPage = () => {   
     const dispatch = useDispatch();
     const user_id = localStorage.getItem('user_id');
     const handleSubmit = (values) => {
-        dispatch(createTask({ ...values }));
-        window.location.href = '/task/allTasks';
+        dispatch(createTask({ ...values }))
+        .then(() => {
+            <Navigate to="/tasks/allTasks" />
+        });
+       
     };
     const task = {
         title: '',

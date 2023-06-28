@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { TasKFormComponent } from "../components/TaskFormComponent";
 import { editTask, showTask } from "../store/thunks/taskThunk";
 import { selectTaskById } from "../store/slices/taskSlice";
+import { Navigate } from "react-router-dom";
 
 export const EditTaskPage = () => {
     const taskId = useParams().taskId;
@@ -14,8 +15,11 @@ export const EditTaskPage = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
-        dispatch(editTask({ ...values }));
-        window.location.href = '/tasks/allTasks';
+        dispatch(editTask({ ...values }))
+        .then(() => {
+            <Navigate to="/tasks/allTasks" />
+        });
+        
     };
 
     useEffect(() => {
