@@ -32,7 +32,7 @@ export const DeletePage = () => {
           console.error('Error al eliminar la tarea:', error);
         });
     }
-  }, [dispatch, taskId, navigate,  deletionPerformed]);
+  }, [dispatch, taskId, deletionPerformed]);
   
 
   return (
