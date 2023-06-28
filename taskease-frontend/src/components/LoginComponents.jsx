@@ -2,7 +2,6 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Link, NavLink } from 'react-router-dom';
 
 export const LoginComponent = ({ user, onSubmit, errorLogin }) => {
     return (
