@@ -24,6 +24,7 @@ const taskSlice = createSlice({
         [fetchTasks.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.error.message;
+            state.success = false;
             return state;
         },
         [createTask.pending]: (state, action) => {
@@ -40,6 +41,7 @@ const taskSlice = createSlice({
         [createTask.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.error.message;
+            state.success = false;
             return state;
         },
         [showTask.pending]: (state, action) => {
@@ -67,6 +69,7 @@ const taskSlice = createSlice({
         [deleteTask.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.error.message;
+            state.success = false;
             return state;
         },
         [editTask.pending]: (state, action) => {
@@ -81,6 +84,7 @@ const taskSlice = createSlice({
         [editTask.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.error.message;
+            state.success = false;
             return state;
         },
     }
