@@ -1,4 +1,4 @@
-export const TASKEASE_API_URL = 'http://localhost:7000/api';
+export const TASKEASE_API_URL = 'https://taskease-production.up.railway.app/api';
 
 export const taskeaseApi = async (
     { method, path, body, query }
