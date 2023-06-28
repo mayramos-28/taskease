@@ -7,7 +7,7 @@ const statusOptions = [
     { value: "canceled", label: "Cancelada" }
 ];
 
-export const TasKFormComponent = ({task, onSubmit, btnValue}) => {
+export const TasKFormComponent = ({task, onSubmit, btnValue, errorForm}) => {
     return (
         <>
             
@@ -70,6 +70,10 @@ export const TasKFormComponent = ({task, onSubmit, btnValue}) => {
                         <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
                            {btnValue}
                         </button>
+
+                        <div>
+                            {errorForm && <div className="text-red-500 mt-1">{errorCreate}</div>}
+                        </div>
                     </Form>
                 )}
             </Formik>

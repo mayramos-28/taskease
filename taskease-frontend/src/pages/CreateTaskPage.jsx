@@ -7,12 +7,9 @@ import { Navigate } from "react-router-dom";
 export const CreateTaskPage = () => {   
     const dispatch = useDispatch();
     const user_id = localStorage.getItem('user_id');
+    const { loading, error, suceess } = useSelector(state => state.task);
     const handleSubmit = (values) => {
-        dispatch(createTask({ ...values }))
-        .then(() => {
-            <Navigate to="/tasks/allTasks" />
-        });
-       
+        dispatch(createTask({ ...values }))                 
     };
     const task = {
         title: '',
@@ -20,6 +17,14 @@ export const CreateTaskPage = () => {
         status: '',     
         expiration_date: '',
         user_id: user_id
+    }
+    if(loading){
+        <div className="flex justify-center items-center">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+    }
+    if(suceess){
+        <Navigate to="/tasks/allTasks" />
     }
     return (
         <>
@@ -29,6 +34,7 @@ export const CreateTaskPage = () => {
                 task={task}
                 onSubmit={ handleSubmit }
                 btnValue="Añadir"
+                errorForm={error}
 
                 />
             </div>

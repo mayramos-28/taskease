@@ -9,18 +9,14 @@ import { Navigate } from "react-router-dom";
 export const EditTaskPage = () => {
     const taskId = useParams().taskId;
     const task = useSelector(state => selectTaskById(state, taskId));
-    const { loading, error } = useSelector(state => state.task);
+    const { loading, error, success } = useSelector(state => state.task);
     const [deletionPerformed, setDeletionPerformed] = useState(false);
     const firstExecution = useRef(true);
     const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
-        dispatch(editTask({ ...values }))
-        .then(() => {
-            <Navigate to="/tasks/allTasks" />
-        });
-        
-    };
+        dispatch(editTask({ ...values }))     
+         };
 
     useEffect(() => {
         if (firstExecution.current && !deletionPerformed) {
@@ -40,12 +36,14 @@ export const EditTaskPage = () => {
             
         )
     }
-    if (error) return <p>{error}</p>
+   if(success){
+         <Navigate to="/tasks/allTasks" />
+   }
 
     return (
         <div>
             <h1>Editar tarea N# {taskId}</h1>
-            <TasKFormComponent task={task} onSubmit={handleSubmit} btnValue='Editar' />
+            <TasKFormComponent task={task} onSubmit={handleSubmit} btnValue='Editar' errorForm={error} />
         </div>
     )
 };
